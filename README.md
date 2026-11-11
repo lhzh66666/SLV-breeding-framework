@@ -1,32 +1,29 @@
-# SLV breeding framework analysis scripts
+# DGSR Calculation and Visualization Code
 
-This repository contains the analysis scripts for the manuscript:
+This repository contains the R code and processed/raw data used for the **Molecular Horticulture** manuscript. It includes the modular validation of DGSR components (Figure 2), the multi-environment phenotypic data (Figure 3), and the cross-species end-to-end proof-of-concept evaluation using the soybean RIL population (Figure 4).
 
-**A Systems Life View framework to quantify resource-allocation trade-offs and enable coordinated multi-trait improvement in specialized metabolite crops**
+## File Structure and Description:
 
-## Requirements
-- Python 3.15
-- pandas, numpy, scipy, matplotlib, openpyxl
-- R 4.3.1 (for BLUP estimation, lme4 package)
+### Figure 2 (Modular Validation)
+*   `Fig2A_data.csv`: Processed data for Panel A (A0 vs. Proportion of stable QTLs).
+*   `Fig2B_data.csv`: Processed data for Panel B (G0 vs. Observed F1 progeny performance).
+*   `Fig2C_data.csv`: Processed data for Panel C (P0 vs. Environmental sensitivity).
+*   `README_Figure2.md`: Detailed instructions for the Figure 2 dataset.
 
-## Files
-- `SLV_analysis.py`: Main script for SLV model construction, ΔS calculation, time-split blind validation, LOYO cross-validation, Pareto front analysis, and permutation tests.
-- `test_single.py`: Script for single-trait selection comparison.
-- `Table1-4.xlsx`: Soybean phenotype and genotype data (Sheet 1: Phenotype; Sheet 2: Genotype).
-- `Top_selection_results.xlsx`: Yield and isoflavone means, differences, and permutation test P values for Top10/20/30 selection intensities.
-- `SLV_Detailed_Predictions.xlsx`: Predicted and observed ΔS for each RIL line.
-- `A_ge_results.xlsx`: Genotype–environment adaptability A(g,e) for each line across locations.
+### Figure 3 (Phenotypic Data)
+*   `Data.xlsx`: Raw phenotypic data across multiple environments.
+*   `A_ge_results.xlsx`: Additive × Environment (A×E) interaction effects.
 
-## Usage
-1. Ensure `Table1-4.xlsx` is in the same directory as `SLV_analysis.py`.
-2. Run:
-   ```python
-   python SLV_analysis.py
-   ```
-3. Output files and figures will be generated in the current directory.
+### Figure 4 (End-to-End Soybean Validation)
+*   `01_DGSR_Calculation.R`: Script to calculate G0 (selection index), A0 (favorable alleles), P0 (polymorphism), and the composite DGSR score.
+*   `02_Figure_4_Visualization.R`: Script to generate the 3-panel composite plot (Figure 4A, 4B, 4C).
+*   `Soybean_DGSR_EndToEnd.csv`: The output file containing DGSR scores for the 118 RILs.
+*   `MAPMAKER.txt`: Genotypic data (259 polymorphic markers) for the soybean RIL population.
 
-## Data
-Soybean RIL genotype and phenotype data are also available in Supplementary Data S1 of the manuscript.
+## Requirements:
+R version 4.0 or higher. The required packages are `readxl`, `ggplot2`, `ggrepel`, `patchwork`, `dplyr`, and `scales`.
 
-## Contact
-Huizhen Liang (lhzh66666@163.com)
+## Usage:
+For Figure 4 reproducibility, ensure `Data.xlsx` and `MAPMAKER.txt` are in the same working directory.
+1. Run `01_DGSR_Calculation.R` to generate the DGSR scores.
+2. Run `02_Figure_4_Visualization.R` to generate the high-resolution Figure 4.
